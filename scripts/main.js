@@ -10,9 +10,27 @@
 */
 
 function handValue(hand) {
+  let totalValue = 0;
 
+  for (let i = 0; i < hand.length; i++) {
+    if (hand[i] === "K" || hand[i] === "Q" || hand[i] === "J") {
+      hand[i] = "10";
+    } else if (hand[i] === "A") {
+      if (totalValue > "10") {
+        hand[i] = "1";
+      } else {
+        hand[i] = "11"
 
-  return;
+      }
+
+    }
+    totalValue = parseInt(hand[i]) + totalValue;
+    if (totalValue > 21) {
+      (totalValue -= 10);
+    }
+  }
+  console.log(hand, totalValue);
+  return totalValue;
 }
 
 /* -----  Hints ------
